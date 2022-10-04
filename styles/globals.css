@@ -139,3 +139,7 @@ nav {
     @apply bg-day bg-opacity-90 dark:bg-night dark:bg-opacity-90;
   }
 }
+
+.logo_img {
+  width: 24px;
+}
