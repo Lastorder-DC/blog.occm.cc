@@ -71,7 +71,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
           <Link href="/">
             <a aria-label={BLOG.title}>
               <div className="h-6">
-                <Image alt="Mastodon Logo" src="/logo.png" className="logo_img" />
+                <Image alt="Mastodon Logo" src="/logo.png" className="logo_img" width={24} height={24} />
               </div>
             </a>
           </Link>
