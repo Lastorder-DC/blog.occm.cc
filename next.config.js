@@ -3,7 +3,7 @@ module.exports = {
   images: {
     loader: 'akamai',
     path: '/',
-  }
+  },
   eslint: {
     dirs: [
       'components',
