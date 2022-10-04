@@ -1,8 +1,7 @@
 module.exports = {
   webpack5: true,
   images: {
-    loader: 'akamai',
-    path: '/',
+    domains: ['gravatar.com']
   },
   eslint: {
     dirs: [
