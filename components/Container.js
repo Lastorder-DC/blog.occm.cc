@@ -62,7 +62,7 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
               content={meta.date}
             />
             <meta property="article:author" content={BLOG.author} />
-            <meta name="fediverse:creator" content="@notice@occm.cc">
+            <meta name="fediverse:creator" content="@notice@occm.cc" />
           </>
         )}
       </Head>
