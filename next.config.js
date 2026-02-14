@@ -23,9 +23,15 @@ module.exports = {
       }
     ]
   },
-  transpilePackages: ['dayjs'],
   webpack: (config) => {
     config.resolve.alias.canvas = false
+    // Exclude .d.ts files from dayjs locale dynamic import context
+    config.plugins.push(
+      new (require('webpack')).ContextReplacementPlugin(
+        /dayjs[/\\]locale$/,
+        /\.js$/
+      )
+    )
     return config
   }
   // webpack: (config, { dev, isServer }) => {
