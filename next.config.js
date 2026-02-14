@@ -1,6 +1,11 @@
 module.exports = {
   images: {
-    domains: ['gravatar.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'gravatar.com'
+      }
+    ]
   },
   eslint: {
     // dirs: ['components', 'layouts', 'lib', 'pages']
@@ -18,7 +23,11 @@ module.exports = {
       }
     ]
   },
-  transpilePackages: ['dayjs']
+  transpilePackages: ['dayjs'],
+  webpack: (config) => {
+    config.resolve.alias.canvas = false
+    return config
+  }
   // webpack: (config, { dev, isServer }) => {
   //   // Replace React with Preact only in client production build
   //   if (!dev && !isServer) {
