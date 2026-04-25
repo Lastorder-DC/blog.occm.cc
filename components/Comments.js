@@ -47,7 +47,11 @@ const parkCusdisIframe = () => {
 }
 
 const SafeCusdis = props => {
-  useIsomorphicLayoutEffect(() => parkCusdisIframe, [])
+  useIsomorphicLayoutEffect(() => {
+    return () => {
+      parkCusdisIframe()
+    }
+  }, [])
 
   return <CusdisComponent {...props} />
 }
