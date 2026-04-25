@@ -37,7 +37,7 @@ const BLOG = {
     }
   },
   comment: {
-    provider: 'cusdis',
+    provider: '',
     gitalkConfig: {
       repo: '',
       owner: '',
@@ -50,12 +50,12 @@ const BLOG = {
       repo: 'Lastorder-DC/blog.occm.cc'
     },
     cusdisConfig: {
-      appId: 'c8e56656-7e65-4bdf-a3f6-6efb89dc288b',
-      host: 'https://cusdis.com',
-      scriptSrc: 'https://cusdis.com/js/cusdis.es.js'
+      appId: '',
+      host: '',
+      scriptSrc: ''
     }
   },
-  isProd: false
+  isProd: true
 }
 // export default BLOG
 module.exports = BLOG
