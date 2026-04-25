@@ -55,7 +55,7 @@ const BLOG = {
       scriptSrc: 'https://cusdis.com/js/cusdis.es.js'
     }
   },
-  isProd: true
+  isProd: false
 }
 // export default BLOG
 module.exports = BLOG
