@@ -1,4 +1,5 @@
 import 'gitalk/dist/gitalk.css'
+import { useEffect, useLayoutEffect } from 'react'
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import cn from 'classnames'
@@ -23,6 +24,33 @@ const CusdisComponent = dynamic(
   },
   { ssr: false }
 )
+
+const useIsomorphicLayoutEffect =
+  typeof window === 'undefined' ? useEffect : useLayoutEffect
+
+const parkCusdisIframe = () => {
+  const thread = document.getElementById('cusdis_thread')
+  const iframe = thread?.querySelector('iframe')
+
+  if (!iframe) return
+
+  let parkingElement = document.getElementById('cusdis_parking')
+
+  if (!parkingElement) {
+    parkingElement = document.createElement('div')
+    parkingElement.id = 'cusdis_parking'
+    parkingElement.hidden = true
+    document.body.appendChild(parkingElement)
+  }
+
+  parkingElement.appendChild(iframe)
+}
+
+const SafeCusdis = props => {
+  useIsomorphicLayoutEffect(() => parkCusdisIframe, [])
+
+  return <CusdisComponent {...props} />
+}
 
 const Comments = ({ frontMatter }) => {
   const router = useRouter()
@@ -55,7 +83,8 @@ const Comments = ({ frontMatter }) => {
         <UtterancesComponent issueTerm={frontMatter.id} />
       )}
       {BLOG.comment && BLOG.comment.provider === 'cusdis' && (
-        <CusdisComponent
+        <SafeCusdis
+          key={frontMatter.id}
           lang={fetchCusdisLang(BLOG.lang)}
           attrs={{
             host: BLOG.comment.cusdisConfig.host,
